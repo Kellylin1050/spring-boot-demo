@@ -1,6 +1,5 @@
-package com.example.demo;
+package L6;
 
-import L4mvc.api.Student3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

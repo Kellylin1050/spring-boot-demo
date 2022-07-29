@@ -1,4 +1,4 @@
-package com.example.demo;
+package L6;
 
 import javax.persistence.*;
 
