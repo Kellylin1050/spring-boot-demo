@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,8 +29,16 @@ public class User {
     //@OneToMany(mappedBy="user", cascade={CascadeType.ALL})
     //private List<City> city;
 
+    @ManyToMany(targetEntity = City.class)
+    @JoinTable(name = "user_city",
 
+            joinColumns = {@JoinColumn(name = "sys_user_id",referencedColumnName = "userId"),
+                            @JoinColumn(name = "sys_user_name",referencedColumnName = "userName")},
 
+            inverseJoinColumns = {@JoinColumn(name = "sys_city_id",referencedColumnName = "cityId"),
+                                    @JoinColumn(name = "sys_city_name",referencedColumnName = "cityName")}
+    )
+    private Set<City> cities = new HashSet<>();
 
     public Integer getUserId() {
         return userId;
@@ -44,4 +55,12 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public Set<City> getCities() {
+        return cities;
+    }
+    public void setCities(Set<City> cities) {
+        this.cities = cities;
+    }
+
 }

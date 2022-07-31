@@ -24,6 +24,9 @@ public class City {
     //@JoinColumn(name="userId",nullable=false)
     //private User user;
 
+    @ManyToMany(mappedBy="cities")
+    private Set<User> users = new HashSet<User>(0);
+
     public Integer getCityId() {
         return cityId;
     }
@@ -40,6 +43,10 @@ public class City {
         this.cityName = cityName;
     }
 
-
-
+    public Set<User> getUsers() {
+        return users;
+    }
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }
