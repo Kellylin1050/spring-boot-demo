@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -32,12 +33,10 @@ public class User {
     @ManyToMany(targetEntity = City.class)
     @JoinTable(name = "user_city",
 
-            joinColumns = {@JoinColumn(name = "sys_user_id",referencedColumnName = "userId"),
-                            @JoinColumn(name = "sys_user_name",referencedColumnName = "userName")},
-
-            inverseJoinColumns = {@JoinColumn(name = "sys_city_id",referencedColumnName = "cityId"),
-                                    @JoinColumn(name = "sys_city_name",referencedColumnName = "cityName")}
-    )
+            joinColumns = {@JoinColumn(name = "sys_user_id",referencedColumnName = "userId")},
+            //@JoinColumn(name = "sys_user_name",referencedColumnName = "userName")
+            inverseJoinColumns = {@JoinColumn(name = "sys_city_id",referencedColumnName = "cityId")})
+            //@JoinColumn(name = "sys_city_name",referencedColumnName = "cityName")
     private Set<City> cities = new HashSet<>();
 
     public Integer getUserId() {

@@ -28,33 +28,35 @@ class UserTest {
     @Transactional
     @Rollback(false)
     public void addUserAndCity(){
-        User user1 = new User();
+        User user = new User();
         //User user2 = new User();
         //User user3 = new User();
         City city1 = new City();
-        //City city2 = new City();
-        //City city3 = new City();
-        user1.setUserId(6);
-        user1.setUserName("Jay");
+        City city2 = new City();
+        City city3 = new City();
+
+        //user1.setUserId(6);
+        user.setUserName("Ivan");
         //user2.setUserId(7);
         //user2.setUserName("Candy");
         //user3.setUserId(8);
         //user3.setUserName("Eva");
-        city1.setCityId(6);
-        city1.setCityName("Taiwan");
+
+        //city1.setCityId(6);
+        city1.setCityName("Germany");
         //city2.setCityId(7);
         //city2.setCityName("America");
         //city3.setCityId(8);
         //city3.setCityName("France");
 
-        city1.getUsers().add(user1);
-        //city2.getUsers().add(user2);
-        //city3.getUsers().add(user3);
+        city1.getUsers().add(user);
+        //city2.getUsers().add(user);
+        //city3.getUsers().add(user);
 
-        user1.getCities().add(city1);
+        user.getCities().add(city1);
         //user2.getCities().add(city2);
         //user3.getCities().add(city3);
-        userRepository.save(user1);
+        userRepository.save(user);
         //userRepository.save(user2);
         //userRepository.save(user3);
         cityRepository.save(city1);
